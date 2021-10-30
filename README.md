@@ -1,3 +1,5 @@
+![example workflow](https://github.com/chusteven/zero2prod/actions/workflows/general.yml/badge.svg)
+
 ## Overview
 
 ## Notes
