@@ -1,5 +1,5 @@
 application:
   host: 0.0.0.0
 
-database:
-  host: "kubernetes.docker.internal"  # lolcats -- this is not real; but more a Docker on MacOS thing...
+# database:
+  # host: "kubernetes.docker.internal"  # lolcats -- this is not real; but more a Docker on MacOS thing...
