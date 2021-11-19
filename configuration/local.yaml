@@ -3,3 +3,4 @@ application:
 
 database:
   host: "kubernetes.docker.internal"
+  require_ssl: false
