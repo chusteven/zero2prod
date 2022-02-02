@@ -42,8 +42,13 @@ done
 
 >&2 echo "Postgres is up and running on port ${DB_PORT}!"
 
-# https://github.com/docker/for-mac/issues/2965
-export DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@kubernetes.docker.internal:${DB_PORT}/${DB_NAME}
+LOCAL_DB_HOST="localhost"
+if [ "$arch" == "arm64" ]
+then
+    # https://github.com/docker/for-mac/issues/2965
+    LOCAL_DB_HOST="kubernetes.docker.internal"
+fi
+export DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@${LOCAL_DB_HOST}:${DB_PORT}/${DB_NAME}
 sqlx database create
 sqlx migrate run
 

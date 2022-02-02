@@ -2,5 +2,5 @@ application:
   host: 0.0.0.0  # Book has this as 127.0.0.1; but that doesn't work machine vs. container...
 
 database:
-  host: "kubernetes.docker.internal"
+  # host: "kubernetes.docker.internal"  # so many failure points... CI/CD, local testing, local Dockerized testing, ...
   require_ssl: false
