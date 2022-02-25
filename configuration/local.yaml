@@ -1,5 +1,6 @@
 application:
   host: 0.0.0.0  # Book has this as 127.0.0.1; but that doesn't work machine vs. container...
+  base_url: "http://127.0.0.1"
 
 database:
   # host: "kubernetes.docker.internal"  # so many failure points... CI/CD, local testing, local Dockerized testing, ...
