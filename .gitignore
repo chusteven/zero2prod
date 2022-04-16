@@ -1,2 +1,3 @@
 /target
 .DS_Store
+scripts/drop_test_dbs.py
