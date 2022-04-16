@@ -29,6 +29,7 @@ pub struct TestApp {
     pub port: u16,
 }
 
+#[derive(Debug)]
 pub struct ConfirmationLinks {
     pub html: reqwest::Url,
     pub plain_text: reqwest::Url,
