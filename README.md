@@ -4,6 +4,8 @@
 
 ## Notes
 
+To get tests working, run `ulimit -n 10000` on MacOS.
+
 ### Docker
 
 To get docker up and running w/ Postgres, I used the following two resources:
