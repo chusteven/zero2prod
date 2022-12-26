@@ -4,6 +4,7 @@ use crate::routes::home;
 use crate::routes::login;
 use crate::routes::{confirm, health_check, login_form, publish_newsletter, subscribe};
 use actix_web::dev::Server;
+use actix_web::web::Data;
 use actix_web::{web, App, HttpServer};
 use secrecy::Secret;
 use sqlx::postgres::PgPoolOptions;
@@ -43,7 +44,7 @@ impl Application {
             connection_pool,
             email_client,
             configuration.application.base_url,
-            configuration.application.hmac_secret,
+            HmacSecret(configuration.application.hmac_secret),
         )?;
         Ok(Self { port, server })
     }
@@ -88,12 +89,12 @@ fn run(
             .app_data(db_pool.clone())
             .app_data(email_client.clone())
             .app_data(base_url.clone())
-            .app_data(HmacSecret(hmac_secret.clone()))
+            .app_data(Data::new(hmac_secret.clone()))
     })
     .listen(listener)?
     .run();
     Ok(server)
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct HmacSecret(pub Secret<String>);
